@@ -1,0 +1,27 @@
+<div class = "left-box">
+	<h2>User info</h2>
+
+		<div class = "bar">
+			<a>name</a>
+			<%=  %>
+		</div>
+		<a>introduction</a>
+		<%= %>
+		<%= f.submit<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> %>
+
+
+	<h2>New book</h2>
+	<%= form_for(@book) do |f| %>
+		<div class ="new-title">
+			<h4>Title</h4>
+			<%= f.text_field :title %>
+		</div>
+		<div class = "new-body">
+			<h4>Opinion</h4>
+			<%= f.text_area :body %>
+		</div>
+		<div class = "update-box">
+			<%= f.submit "Create Book" %>
+	 	</div>
+	<% end %>
+</div>
