@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'users/show'
-  
-  get "top" => "books#top"
-  root "users#index" # ログイン後マイページへ飛ぶ
+  get "top" => "home#top"
+  get "about" => "home#about"
+  root "users#show" # ログイン後マイページへ飛ぶ
   resources :books
-  resources :users, only: [:show]
+  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

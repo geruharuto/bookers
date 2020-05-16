@@ -1,0 +1,9 @@
+<h1>User info</h1>
+<%= form_for(@user) do |f| %>
+<a>Name</a>
+<%= f.string_field :name %>
+<a>Image</a>
+
+<a>Introduction</a>
+<%= f.text_field :introduction %>
+<%= f.submit "Update User" %>

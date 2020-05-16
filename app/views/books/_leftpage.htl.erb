@@ -1,13 +1,12 @@
 <div class = "left-box">
 	<h2>User info</h2>
-
 		<div class = "bar">
 			<a>name</a>
-			<%=  %>
+			<%= user.name %>
 		</div>
 		<a>introduction</a>
-		<%= %>
-		<%= f.submit<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> %>
+		<%= user.introduction %>
+		<%= link_to "スパナ" edit_user_path(current_user.id) %>
 
 
 	<h2>New book</h2>
