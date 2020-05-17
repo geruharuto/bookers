@@ -1,0 +1,10 @@
+<div class = "left-box">
+	<h2>User info</h2>
+		<div class = "bar">
+			<a>name</a>
+			<%= user.name %>
+		</div>
+		<a>introduction</a>
+		<%= user.introduction %>
+		<%= link_to "スパナ", edit_user_path(@user.id) %>
+</div>

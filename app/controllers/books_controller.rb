@@ -17,4 +17,8 @@ class BooksController < ApplicationController
         @book.destroy
         redirect_to books_index #全ユーザーの本一覧
     end
+    private
+    def user_params
+        params.require(:user).permit(:name, :introduction)
+    end
 end
