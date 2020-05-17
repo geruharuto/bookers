@@ -1,26 +1,19 @@
-<div class = "left-box">
-	<h2>User info</h2>
-		<div class = "bar">
-			<a>name</a>
-			<%= user.name %>
-		</div>
-		<a>introduction</a>
-		<%= user.introduction %>
-		<%= link_to "スパナ" edit_user_path(current_user.id) %>
-
-
-	<h2>New book</h2>
-	<%= form_for(@book) do |f| %>
-		<div class ="new-title">
-			<h4>Title</h4>
-			<%= f.text_field :title %>
-		</div>
-		<div class = "new-body">
-			<h4>Opinion</h4>
-			<%= f.text_area :body %>
-		</div>
-		<div class = "update-box">
-			<%= f.submit "Create Book" %>
-	 	</div>
+<h1>Books</h1>
+<table class = "clearfix">
+	<div class = "underbar">
+		<tr>
+			<th class = "null"></th>
+			<th class = "title">Title</th>
+	   		<th class = "opinion">Opinion</th>
+	   	</tr>
+	</div>
+   	<% @books.each do |book| %>
+	<tr class = "box clearfix">
+		<td><%= link_to profile_image_id show_path %></td>
+		<td><%= link_to book.title, edit_user  %></td>
+	 	<td><%= book.body %></td>
+   	</tr>
 	<% end %>
-</div>
+</table>
+
+<%= render "books/leftpage" %>

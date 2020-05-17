@@ -11,42 +11,40 @@
 
   <body>
 
-    <div id="slidemenu">
-      <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+    <div>
+      <ul class="">
         <% if user_signed_in? %>
           <li class="">
-            <%= link_to 'Home', user_path(current_user.id)#マイページ %>
+            <%= link_to 'Home', user_path(current_user.id) %><!--マイページ　　問題-->
           </li>
           <li class="">
-            <%= link_to 'Users', users_path #登録ユーザー一覧%>
+            <%= link_to 'Users', users_path %><!--登録ユーザー一覧 問題-->
           </li>
           <li class="">
-            <%= link_to 'Books', books_path #本投稿一覧%>
+            <%= link_to 'Books', books_path %><!--本投稿一覧　問題-->
           </li>
           <li class="">
-            <%= link_to 'logout',　destroy_user_session_path, method: :delete #ログアウト%>
+            <%= link_to 'logout', destroy_user_session_path, method: :delete %> <!--ログアウト　完成-->
           </li>
         <% else %>
           <li class="">
-            <%= link_to "Home", user_path(current_user.id) #マイページ%>
+            <%= link_to "Home", user_path(current_user.id) %><!--マイページ-->
           </li>
           <li class="">
-            <%= link_to "About", about_path %>
+            <%= link_to "About", about_path %><!--アバウト画面　完成-->
           </li>
           <li class="">
-            <%= link_to "sign up", new_user_password_path %>
+            <%= link_to "sign up", new_user_password_path %><!--サインアップ　完成-->
           </li>
           <li class="">
-            <%= link_to "login", new_user_session_path %>
+            <%= link_to "login", new_user_session_path %><!--サインイン　完成-->
           </li>
         <% end %>
      </ul>
     </div>
     <%= yield %>
-  </body>
-</html>
-    <%= yield %>
     <footer>
       <a>CopyRight Infratop.inc</a>
     </footer>
+  </body>
 </html>
