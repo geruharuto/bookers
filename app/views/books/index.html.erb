@@ -3,14 +3,14 @@
 	<div class = "underbar">
 		<tr>
 			<th class = "null"></th>
-			<th class = "title">タイトル</th>
-	   		<th class = "opinion">感想</th>
+			<th class = "title">Title</th>
+	   		<th class = "opinion">Opinion</th>
 	   	</tr>
 	</div>
    	<%= @books.each do |book| %>
 	<tr class = "box clearfix">
 		<td> <%= attachment_image_tag @user, :profile_image_id, :fill, 20, 20, fallback: "no_image.jpg"%></td>
-		<td><%= link_to book.title, users_path(user_id)  %></td>
+		<td><%= link_to book.title, book_path(@book_id) %></td>
 	 	<td><%= book.body %></td>
    	</tr>
 	<% end %>

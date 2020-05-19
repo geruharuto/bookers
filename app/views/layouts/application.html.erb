@@ -15,7 +15,7 @@
       <ul class="">
         <% if user_signed_in? %>
           <li class="">
-            <%= link_to 'Home', user_path(current_user.id) %><!--マイページ　　問題-->
+            <%= link_to 'Home', user_path(current_user.id) %><!--マイページ　クリア-->
           </li>
           <li class="">
             <%= link_to 'Users', users_path %><!--登録ユーザー一覧 問題-->
@@ -28,7 +28,7 @@
           </li>
         <% else %>
           <li class="">
-            <%= link_to "Home", user_path(current_user.id) %><!--マイページ-->
+            <%= link_to "Home", root_path %><!--トップページに返す-->
           </li>
           <li class="">
             <%= link_to "About", about_path %><!--アバウト画面　完成-->
