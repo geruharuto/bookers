@@ -1,36 +1,10 @@
-<%= render "books/leftpage">
-<h1>Books</h1>
-<table class = "clearfix">
-	<tr>
-		<th class = "null"></th>
-		<th class = "title">Title</th>
-	   	<th class = "opinion">Opinion</th>
-   	</tr>
-   	<% @books.each do |book| %>
-	<tr class = "index-box clearfix">
-		<tr class = "box clearfix">
-		<td class = "mypage-icon">
-			<a href ="#">
-				<%=   %>
-			</a>
-		</td>
-		<td class = "show-title">
-			<a href = "edit_user">
-				<%= book.title  %>
-			</a>
-		</td>
-	 	<td class = "show-body">
-	 		<%= book.body %>
-	 	</td>
-   	</tr>
-	    <td class = "index-edit">
-		  <%= link_to "Edit", edit_book_path(book.id) %>
-		</td>
-		<td class = "index-destroy">
-			<% if @post_image.user == current_user %>
-			  <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
-			  <% end %>
- 	    </td>
-   	    </tr>
-	<% end %>
-</table>
+<h1>Editing Book</h1>
+<a>Title</a>
+<%= f.text_field :title %>
+<h4>Opinion</h4>
+<%= f.text_field :body %>
+<%= f.submit "Update Book" %>
+
+<%= link_to "show", book_path %>
+<%= link_to "back", books_path %>
+

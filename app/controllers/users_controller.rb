@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  def show
-  	@user = User.find(params[:id]) #ユーザーを探す
-  	@books = @user.books#上のユーザーの持ってる本を全部出す」
+  def show#ヘッダーのHomeで反応
+  	@user = User.find(params[:id]) #ユーザーを探す,
+  	@books = current_user.books#上のユーザーの持ってる本を全部出す」
     @book = Book.new
-  end#ヘッダーのHomeで反応
+   
+  end
   def edit#左側のスパナで反応
   	@user = User.find(params[:id])
   end
@@ -13,10 +14,12 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
   def index
-    @users = User.all #ヘッダーのusersに反応
+    @users = User.all #ヘッダーのusers
+    @user = current_user #ログインしている自分
+    @book = Book.new#ブックのクリエイト画面
   end
   private
   def user_params
-     params.require(:user).permit(:name, :introduction)
+     params.require(:user).permit(:name, :introduction, :profile_image)
   end
 end

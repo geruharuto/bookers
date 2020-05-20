@@ -1,16 +1,17 @@
-<h1>Books</h1>
+<h1>Users</h1>
 <table class = "clearfix">
 	<div class = "underbar">
 		<tr>
-			<th class = "null"></th>
-			<th class = "title">Title</th>
-	   		<th class = "opinion">Opinion</th>
+			<th class = "image">image</th>
+			<th class = "title">name</th>
+	   		<th class = "opinion"></th>
 	   	</tr>
 	</div>
-   	<% @users.each do |book| %>
+   	<% @users.each do |book| %><!--ユーザー一人一人の表示を繰り返す -->
 	<tr class = "box clearfix">
-		<td><%= attachment_image_tag @user, :profile_image_id, :fill, 20, 20, fallback: "no_image.jpg"%></td>
-		<td><%= @users.name  %></td>
+		<td><%= attachment_image_tag @user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg"%></td>
+		<td><%= @users.name %></td>
+		<td><%= link_to "show", user_path(@users) %>
    	</tr>
 	<% end %>
 </table>
