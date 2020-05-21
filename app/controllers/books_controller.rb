@@ -25,8 +25,12 @@ class BooksController < ApplicationController
     end
     def update
         book = Book.find(params[:id])
-        book.update(book_params)#private処理
-        redirect_to book_path(book.id)
+        if book.update(book_params)#private処理
+            redirect_to book_path(book.id), notice: "You have creatad book successfully."
+    else
+            flash.now[:alert]  = "error"
+            render :index
+        end
     end
     def destroy
         book = Book.find(params[:id])
