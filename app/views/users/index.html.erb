@@ -7,11 +7,11 @@
 	   		<th class = "opinion"></th>
 	   	</tr>
 	</div>
-   	<% @users.each do |book| %><!--ユーザー一人一人の表示を繰り返す -->
+   	<% @users.each do |users| %><!--ユーザー一人一人の表示を繰り返す -->
 	<tr class = "box clearfix">
-		<td><%= attachment_image_tag @user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg"%></td>
-		<td><%= @users.name %></td>
-		<td><%= link_to "show", user_path(@users) %>
+		<td><%= attachment_image_tag users, :profile_image, size: "50x50", fallback: "no_image.jpg"%></td>
+		<td><%= users.name %></td>
+		<td><%= link_to "show", user_path(users) %>
    	</tr>
 	<% end %>
 </table>
