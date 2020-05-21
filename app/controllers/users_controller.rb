@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
   def show#ヘッダーのHomeで反応
-  	@user = User.find(params[:id]) #ユーザーを探す,
-  	@books = current_user.books#上のユーザーの持ってる本を全部出す」
+    @user = User.find(params[:id]) #ユーザーを探す,
+  	@books = @user.books#ユーザーの持ってる本を全部出す
     @book = Book.new
-   
   end
   def edit#左側のスパナで反応
   	@user = User.find(params[:id])
   end
   def update
-  	@user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+  	user = User.find(params[:id])
+    user.update(user_params)
+    redirect_to user_path(current_user.id)
   end
   def index
     @users = User.all #ヘッダーのusers

@@ -3,30 +3,34 @@ class BooksController < ApplicationController
     def create
         @book = Book.new(book_params)
         @book.user_id = current_user.id
-        @book.save
-        redirect_to book_path(@book)
+        if @book.save
+            redirect_to book_path(@book), notice: "You have creatad book successfully."
+        else
+            flash.now[:alert]  = "error"
+            render :index
+        end
     end
     def index#ヘッダーのBooksに反応
         @books = Book.all
         @book = Book.new
         @user = current_user
     end
-    def show #自分の本の編集や削除の画面
+    def show #自分の本の編集や削除の画面、他の人ならeditなどでない
         @books = Book.find(params[:id])
-        @book = Book.new
         @user = User.find_by(id: @books.user_id)
+        @book = Book.new
     end
     def edit
-        @book = Book.user_id
+        @book = Book.find(params[:id])
     end
     def update
-        book = book.user_id
-        book.update
-        redirect_to book_path(user.id)
+        book = Book.find(params[:id])
+        book.update(book_params)#private処理
+        redirect_to book_path(book.id)
     end
     def destroy
-        @book = Book.find(params[:id])
-        @book.destroy
+        book = Book.find(params[:id])
+        book.destroy
         redirect_to books_path #全ユーザーの本一覧
     end
     private

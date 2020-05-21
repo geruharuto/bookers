@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+     <%= flash[:notice] %>
     <title>Bookers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +12,7 @@
 
   <body>
 
-    <div>
+    <div> 
       <ul class="">
         <% if user_signed_in? %>
           <li class="">
