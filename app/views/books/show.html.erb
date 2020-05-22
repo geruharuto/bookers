@@ -1,21 +1,40 @@
-<%= render "users/leftpage", user: @user %>
-<%= render "books/leftbottom", book: @book %>
-<h1>Books detail</h1>
-<table class = "clearfix">
-	<div class = "underbar">
-		<tr>
-			<th class = "null"></th>
-			<th class = "title">タイトル</th>
-	   		<th class = "opinion">感想</th>
-	   	</tr>
+<div class = "body" style>
+	<div class = "container">
+		<div class = "row" style>
+			<div class = "col-xs-3">
+				<%= render "users/leftpage", user: @user %>
+				<%= render "books/leftbottom", book: @book %>
+			</div>
+			<div class = "col-xs-9" style >
+				<h1>Books detail</h1>
+				<table class = "table">
+					
+					<tbody>
+						<tr>
+							<td>
+							  <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg"%>
+							  
+							  	<%= link_to @user.name, user_path(@books.user_id), class: "user_name" %>	
+							  
+							</td>
+							<td style><%= @books.title %></td>
+							<td style><%= @books.body %></td>
+							<% if current_user.id == @books.user_id %>
+							 	<td>
+							 		<div  class = "btn-sm btn-success center">
+							 			<%= link_to "Edit", edit_book_path %>
+							 		</div>							 		
+							 	</td>
+							 	<td>
+							 		<div class = "btn-sm btn-danger center">
+							 			<%= link_to "Destroy", book_path, method: :delete %>
+							 		</div>
+							 	</td>
+							<% end %>
+				   		</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-	<tr class = "box clearfix">
-		<td> <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg"%></td>
-		<td><%= @books.title %></td>
-		<td><%= @books.body %></td>
-		<% if current_user.id == @books.user_id %>
-		 	<td><%= link_to "edit", edit_book_path %></td>
-		 	<%= link_to "destroy", book_path, method: :delete %> 
-		<% end %>
-   	</tr>
-</table>
+</div>

@@ -1,20 +1,31 @@
-<h1>Users</h1>
-<table class = "clearfix">
-	<div class = "underbar">
-		<tr>
-			<th class = "image">image</th>
-			<th class = "title">name</th>
-	   		<th class = "opinion"></th>
-	   	</tr>
-	</div>
-   	<% @users.each do |users| %><!--ユーザー一人一人の表示を繰り返す -->
-	<tr class = "box clearfix">
-		<td><%= attachment_image_tag users, :profile_image, size: "50x50", fallback: "no_image.jpg"%></td>
-		<td><%= users.name %></td>
-		<td><%= link_to "show", user_path(users) %>
-   	</tr>
-	<% end %>
-</table>
-
-<%= render "users/leftpage", user: @user %>
-<%= render "books/leftbottom", book: @book %>
+<div class = "body" style>
+	<div class = "container">
+		<div class = "row" style>
+			<div class = "col-xs-3">
+				<%= render "users/leftpage", user: @user %>
+				<%= render "books/leftbottom", book: @book %>
+			</div>
+			<div class = "col-xs-9" style >
+				<h1>Users</h1>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>image</th>
+							<th>name</th>
+					   		<th colspan="3"></th>
+					   	</tr>
+					</thead>
+					<tbody>
+				   	<% @users.each do |users| %><!--ユーザー一人一人の表示を繰り返す -->
+					<tr>
+						<td><%= attachment_image_tag users, :profile_image, size: "50x50", fallback: "no_image.jpg"%></td>
+						<td style><%= users.name %></td>
+						<td style><%= link_to "show", user_path(users) %></td>
+				   	</tr>
+					<% end %>
+					</tbody>
+				</table>
+			</div>	
+		</div>
+	</div>	
+</div>	

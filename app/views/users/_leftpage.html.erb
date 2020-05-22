@@ -1,11 +1,17 @@
-<div class = "left-box">
-	<h2>User info</h2>
-	<%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg"%>
-	<div class = "bar">
-			<a>name</a>
-			<%= user.name %>
-	</div>
-	<a>introduction</a>
-	<%= user.introduction %>
-	<%= link_to "スパナ", edit_user_path(@user.id) %>
+<h2>User info</h2>
+<%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg"%>
+<table class = "table">
+	<tr></tr>
+	<tr>
+		<th>name</th>
+		<th><%= user.name %></th>
+	</tr>
+	<tr>
+		<th>introduction</th>
+		<th><%= user.introduction %></th>
+	</tr>
+</table>
+<div class = "row">
+	<%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 </div>
+		

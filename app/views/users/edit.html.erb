@@ -1,23 +1,37 @@
+<div class = "body" style>
+	<div class = "container">
+		<% if @user.errors.any? %>
+		    <ul>
+		      <% @user.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		         <li>error</li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
 
-<% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-         <li>error</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<h1>User info</h1>
-<%= form_for(@user) do |f| %>
-	<a>Name</a>
-	<%= f.text_field :name %>
-	<a>Image</a>
-		<%= f.attachment_field :profile_image %>
-	<a>Introduction</a>
-	<%= f.text_field :introduction %>
-	<%= f.submit "Update User" %>
-
-<% end %>
-
+		<h1>User info</h1>
+		<div class="edit_user">
+		<%= form_for(@user) do |f| %>
+			<div class = "field">
+				<label for="user_name">Name</label>
+				<div class = "name">	
+					<%= f.text_field :name %>
+				</div>
+			</div>
+			<div class = "field">
+				<label for = "user_image">Image</label>
+					<%= f.attachment_field :profile_image %>
+			</div>
+			<div class = "field">
+				<label for="user_introduction">Introduction</label>
+				<div class="introduction">
+					<%= f.text_area :introduction %>
+				</div>
+			</div>
+			<div class = "actions">
+				<%= f.submit "Update User" %>
+			</div>
+		<% end %>
+	</div>
+</div>

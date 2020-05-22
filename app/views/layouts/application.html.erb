@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-     <%= flash[:notice] %>
-    <title>Bookers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-    <div> 
-      <ul class="">
-        <% if user_signed_in? %>
-          <li class="">
-            <%= link_to 'Home', user_path(current_user.id) %><!--マイページ　クリア-->
-          </li>
-          <li class="">
-            <%= link_to 'Users', users_path %><!--登録ユーザー一覧 問題-->
-          </li>
-          <li class="">
-            <%= link_to 'Books', books_path %><!--本投稿一覧　問題-->
-          </li>
-          <li class="">
-            <%= link_to 'logout', destroy_user_session_path, method: :delete %> <!--ログアウト　完成-->
-          </li>
-        <% else %>
-          <li class="">
-            <%= link_to "Home", root_path %><!--トップページに返す-->
-          </li>
-          <li class="">
-            <%= link_to "About", about_path %><!--アバウト画面　完成-->
-          </li>
-          <li class="">
-            <%= link_to "sign up", new_user_password_path %><!--サインアップ　完成-->
-          </li>
-          <li class="">
-            <%= link_to "login", new_user_session_path %><!--サインイン　完成-->
-          </li>
-        <% end %>
-     </ul>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container"> 
+        <nav class="nav navbar-nav navbar-left">
+          <span>Bookers</span>
+        </nav>
+        <nav>
+          <ul class= "nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to ' Home', user_path(current_user.id), class: "glyphicon glyphicon-home home" %><!--マイページ　クリア-->
+              </li>
+              <li>
+                <%= link_to ' Users', users_path, class: "glyphicon glyphicon-user users" %><!--登録ユーザー一覧 問題-->
+              </li>
+              <li>
+                <%= link_to ' Books', books_path, class: "glyphicon glyphicon-book books" %><!--本投稿一覧　問題-->
+              </li>
+              <li>
+                <%= link_to ' logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %> <!--ログアウト　完成-->
+              </li>
+            <% else %>
+              <l>
+                <%= link_to " Home", root_path, class: "glyphicon glyphicon-home home" %><!--トップページに返す-->
+              </li>
+              <li>
+                <%= link_to "About", about_path, class: "glyphicon glyphicon-link about" %><!--アバウト画面　完成-->
+              </li>
+              <li>
+                <%= link_to "sign up", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up" %><!--サインアップ　完成-->
+              </li>
+              <li>
+                <%= link_to "login", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %><!--サインイン　完成-->
+              </li>
+            <% end %>
+         </ul>
+        </nav>
+      </div>
+    </header>
+    <div class = "body">
+      <div class = "container">
+        <%= notice %>
+      </div>
     </div>
     <%= yield %>
     <footer>
-      <a>CopyRight Infratop.inc</a>
+      <div class = "container">
+        <div class ="row">
+          <div class = "col-xs-3 col-xs-offset-9">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

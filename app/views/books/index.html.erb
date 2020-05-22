@@ -1,20 +1,31 @@
-<h1>Books</h1>
-<table class = "clearfix">
-	<div class = "underbar">
-		<tr>
-			<th class = "null"></th>
-			<th class = "title">Title</th>
-	   		<th class = "opinion">Opinion</th>
-	   	</tr>
+<div class = "body" style>
+	<div class = "container">
+		<div class = "row" style>
+			<div class = "col-xs-3">
+				<%= render "users/leftpage", user: @user %>
+				<%= render "books/leftbottom", book: @book %>
+			</div>
+			<div class = "col-xs-9" style >
+				<h1>Books</h1>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th colspan="3"></th>
+							<th>Title</th>
+					   		<th>Opinion</th>
+					   	</tr>
+					</thead>
+					<tbody>
+				   	<% @books.each do |book| %>
+					<tr>
+						<td><%= attachment_image_tag book.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %></td>
+						<td style><%= link_to book.title,book_path(book) %></td>
+					 	<td style><%= book.body %></td>
+				   	</tr>
+					<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-   	<% @books.each do |book| %>
-	<tr class = "box clearfix">
-		<td><%= attachment_image_tag book.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %></td>
-		<td><%= link_to book.title,book_path(book) %></td>
-	 	<td><%= book.body %></td>
-   	</tr>
-	<% end %>
-</table>
-
-<%= render "users/leftpage", user: @user %>
-<%= render "books/leftbottom", book: @book %>
+</div>
