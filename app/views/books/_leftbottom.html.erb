@@ -1,5 +1,5 @@
 <h2>New book</h2>
-<%= form_for(book) do |f| %>
+<%= form_for(@book) do |f| %>
 	<div class = "field row">
 		<label for = "book_title">Title</label><br>
 		<%= f.text_field :title %>
@@ -9,7 +9,7 @@
 			<%= f.text_area :body %>
 	</div>
 	<div class="actions row">
-		<input type = "submit" name="commit" value="Create Book" class = "btn btn-primary col-xs-12" data-disable-with="Create Book">
-	</div>	
+		<%= f.submit "Create Book",class:"btn btn-primary col-xs-12" %>
+	</div>
 <% end %>
 

@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
   def after_sign_in_path_for(resouce)
-     user_path(current_user.id)
-  end
+        notice = "Welcome! You have signed up successfully."
+        user_path(current_user)
+   end
+   def after_sign_up_path_for(resouce)
+        notice = "Welcome! You have signed up successfully."
+        user_path(current_user)
+   end
 end

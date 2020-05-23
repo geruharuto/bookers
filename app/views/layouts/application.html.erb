@@ -9,8 +9,8 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container"> 
+    <header class="navbar navbar-inverse">
+      <div class="container">
         <nav class="nav navbar-nav navbar-left">
           <span>Bookers</span>
         </nav>
@@ -30,17 +30,17 @@
                 <%= link_to ' logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %> <!--ログアウト　完成-->
               </li>
             <% else %>
-              <l>
+              <li>
                 <%= link_to " Home", root_path, class: "glyphicon glyphicon-home home" %><!--トップページに返す-->
               </li>
               <li>
-                <%= link_to "About", about_path, class: "glyphicon glyphicon-link about" %><!--アバウト画面　完成-->
+                <%= link_to " About", home_about_path, class: "glyphicon glyphicon-link about" %><!--アバウト画面　完成-->
               </li>
               <li>
-                <%= link_to "sign up", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up" %><!--サインアップ　完成-->
+                <%= link_to " sign up", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up" %><!--サインアップ　完成-->
               </li>
               <li>
-                <%= link_to "login", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %><!--サインイン　完成-->
+                <%= link_to " login", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %><!--サインイン　完成-->
               </li>
             <% end %>
          </ul>

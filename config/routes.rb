@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "home#top"
-  get "about" => "home#about"
+  get "home/about" => "home#about"
        # ログイン後マイページへ飛ぶ
   resources :books
   resources :users
